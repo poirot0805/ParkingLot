@@ -31,7 +31,6 @@ def allowed_file(filename):
 def upload():
     global img_data
     if request.method == 'POST':
-        return jsonify({"error": 1001, "msg": "请检查上传的图片类型，仅限于png、PNG、jpg、JPG、bmp"})
         f = request.files['file']
 
         if not (f and allowed_file(f.filename)):
