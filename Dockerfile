@@ -10,6 +10,7 @@ COPY . ./
 # 安装依赖
 RUN pip install Flask gunicorn
 RUN pip install torch==1.9.1 torchvision==0.10.1
+RUN pip install numpy==1.21.3
 RUN pip install git+https://github.com/rwightman/pytorch-image-models
 
 # 启动 Web 服务
