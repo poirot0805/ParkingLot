@@ -15,6 +15,7 @@ def predict_one_img(model,device,config,img_data,k,):
     print("[output]------------------------------------------------------")
     class_map = ['充电车位', '子母车位', '子车位', '微型充电车位', '微型车位', '无障碍车位', '机械车位', '货车车位', '车位', 'out of range']
     transform = create_transform(**config)
+    print("[transform]------------------------------------------------------")
     # filename = os.path.join(root_path,img_path)
     # img = Image.open(filename).convert('RGB')
     img_tensor = transform(img_data).unsqueeze(0)  # transform and add batch dimension
@@ -50,6 +51,7 @@ def prepare(checkpoint_path,topk):
 
     config = resolve_data_config({}, model=model)
     model = model.to(device)
+    print("[config]------------------------------------------------------")
     print(type(config))
 
     model.eval()
