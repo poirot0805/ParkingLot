@@ -1,6 +1,6 @@
 # 使用官方 Python 轻量级镜像
 # https://hub.docker.com/_/python
-FROM python:3.9.5
+FROM python:3.9
 
 # 将本地代码拷贝到容器内
 ENV APP_HOME /app
@@ -9,6 +9,8 @@ COPY . ./
 
 # 安装依赖
 RUN pip install Flask gunicorn
+RUN pip install torch==1.9.1 torchvision==0.10.1
+RUN pip install git+https://github.com/rwightman/pytorch-image-models
 
 # 启动 Web 服务
 # 这里我们使用了 gunicorn 作为 Server，1 个 worker 和 8 个线程
