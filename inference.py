@@ -50,6 +50,7 @@ def prepare(checkpoint_path,topk):
 
     config = resolve_data_config({}, model=model)
     model = model.to(device)
+    print(type(config))
 
     model.eval()
 
