@@ -31,6 +31,7 @@ def allowed_file(filename):
 def upload():
     global img_data
     if request.method == 'POST':
+        return jsonify({"error": 1001, "msg": "请检查上传的图片类型，仅限于png、PNG、jpg、JPG、bmp"})
         f = request.files['file']
 
         if not (f and allowed_file(f.filename)):
@@ -62,4 +63,4 @@ if __name__ == "__main__":
     print(("* Loading pytorch model and Flask starting server..."
         "please wait until server has fully started"))
     load_model()
-    app.run(debug=False, host='0.0.0.0', port=8080)
+    app.run(debug=True, host='0.0.0.0', port=8080)
