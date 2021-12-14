@@ -22,6 +22,11 @@ def load_model():
     global model
     global config
     model, config = prepare(checkpoint_path=checkpoint_path, topk=1)
+    if config is None:
+        print("[main]:config none")
+    if model is None:
+        print("[main]:model none")
+
 
 def allowed_file(filename):
     return '.' in filename and filename.rsplit('.', 1)[1] in ALLOWED_EXTENSIONS
@@ -53,6 +58,13 @@ def upload():
 
 def predict():
     global img_data
+    global model
+    global config
+    if config is None:
+        print("[config-None]--------------------------")
+    if model is None:
+        print("[model-None]---------------------------")
+        model,config = prepare(checkpoint_path=checkpoint_path, topk=1)
     data = predict_one_img(model=model,device="cpu",config=config,img_data=img_data,k=1)
 
     # return the data dictionary as a JSON response
